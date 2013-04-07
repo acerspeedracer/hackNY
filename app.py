@@ -18,11 +18,10 @@ def create_user_page (username):
 	allUsers = db.users
 	user = allUsers.find_one({"user":username})
 	if user == None:
-		newUser = {"user":username,"test":"New person woot"}
+		newUser = {"user":username,"songs":[]}
 		allUsers.insert(newUser)
 		user = allUsers.find_one({"user":username})
-	test = user["test"]
-	return test
+	return "Hello %s"%username
 
 ALLOWED_EXTENSIONS = set(['ogg', 'wav', 'mp3'])
 
