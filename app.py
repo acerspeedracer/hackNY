@@ -10,6 +10,10 @@ client = MongoClient('localhost',9003)
 
 @app.route("/")
 def email():
+	return "nothing here"
+
+@app.route("/test")
+def test():
 	return render_template("home.html")
 
 @app.route("/<username>")

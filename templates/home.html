@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Log In</title>
+		<script type="text/javascript" src="jquery-1.9.1.min.js"> </script>
+		<script type="text/javascript">
+			function sendlogin() {
+				var targetPath = "/"+ $("#loginform input[name='username']").val();
+				$("#loginform").attr("target",targetPath);
+				$("#loginform").submit();
+			}
+		</script>
+	</head>
+
+	<body>
+		<form id="loginform" name="input" target="javascript:sendlogin()">
+			<!--username: <input type="text" name="username">-->
+			<div class="row">
+				<div class="large-6 columns">
+					<div class="row collapse">
+						<div class="small-10 columns">
+							<input type="text" placeholder="Username">
+						</div>
+						<div class="small-2 columns">
+							<a href="#" class="button prefix">Login</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</body>
+
+	</html>
