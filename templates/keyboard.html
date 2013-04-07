@@ -1,9 +1,10 @@
 <html>
 	<head>
 		<title>Launchpad</title>
-		<link href="stylesheets/no-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet">
-		<script src="javascripts/jquery-1.9.1.js"></script>
-		<script src="javascripts/jquery-ui-1.10.2.custom.js"></script>
+		<link href="../static/css/bootstrap.css" rel="stylesheet">
+		<script src="../static/js/jquery-1.9.1.js"></script>
+		<script src="../static/js/jquery-ui-1.10.2.custom.js"></script>
+		<script src="../static/js/bootstrap.min.js"></script>
 		<style type="text/css">
 			.keyboard {
 				position: absolute;
@@ -11,41 +12,71 @@
 				left: 10%;
 			}
 			.soundList {
-				position: absolute;
-				width: 8%;
-				height: 90%;
-			}
-			.keyboard-key {
-				width: 100px;
-				height: 100px;
-				background: red;
-				float: left;
-				margin: 5px;
+				height: 85%;
+				overflow-x: hidden;
+				overflow-y: scroll;
 			}
 			.sound-clip {
-				width: 50px;
-				height: 50px;
-				background: green;
-				margin: 5px;
-				list-style-type: none;
+				margin: 3 0 3 0;
+				background: #D2B48C;
+				border: solid black;
+			}
+			.keyboard-key {
+				height: 100px;
+				line-height: 100px;
+				vertical-align: middle;
+				text-align: center;
+				background: red;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				border-width: 10;
+				border-color: white;
+				border: solid white;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="soundList">
-		<ul>
-			<li id="sound_drag_1" class="sound-clip ui-widget-content ui-draggable">Sound 1</li>
-			<li id="sound_drag_2" class="sound-clip ui-widget-content ui-draggable">Sound 2</li>
-			<li id="sound_drag_3" class="sound-clip ui-widget-content ui-draggable">Sound 3</li>
-			<li id="sound_drag_4" class="sound-clip ui-widget-content ui-draggable">Sound 4</li>
-		</ul>
-	</div>
-		<div id="keyboard">
-			<div id="keyQ" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
-			<div id="keyW" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
-			<div id="keyE" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
-			<div id="keyR" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
-			<div id="keyT" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="soundList span2">
+					<div id="sound_drag_1" class="sound-clip">Sound 1</div>
+					<div id="sound_drag_2" class="sound-clip">Sound 2</div>
+			</div>
+			<div class="span22">
+				<div class="row">
+					<div id="keyQ" class="offset2 span2 keyboard-key">Q<audio loop /></div>
+					<div id="keyW" class="span2 keyboard-key">W<audio loop /></div>
+					<div id="keyE" class="span2 keyboard-key">E<audio loop /></div>
+					<div id="keyR" class="span2 keyboard-key">R<audio loop /></div>
+					<div id="keyT" class="span2 keyboard-key">T<audio loop /></div>
+					<div id="keyY" class="span2 keyboard-key">Y<audio loop /></div>
+					<div id="keyU" class="span2 keyboard-key">U<audio loop /></div>
+					<div id="keyI" class="span2 keyboard-key">I<audio loop /></div>
+					<div id="keyO" class="span2 keyboard-key">O<audio loop /></div>
+					<div id="keyP" class="span2 keyboard-key">P<audio loop /></div>
+				</div>
+				<div class="row">
+					<div id="keyA" class="offset3 span2 keyboard-key">A<audio loop /></div>
+					<div id="keyS" class="span2 keyboard-key">S<audio loop /></div>
+					<div id="keyD" class="span2 keyboard-key">D<audio loop /></div>
+					<div id="keyF" class="span2 keyboard-key">F<audio loop /></div>
+					<div id="keyG" class="span2 keyboard-key">G<audio loop /></div>
+					<div id="keyH" class="span2 keyboard-key">H<audio loop /></div>
+					<div id="keyJ" class="span2 keyboard-key">J<audio loop /></div>
+					<div id="keyK" class="span2 keyboard-key">K<audio loop /></div>
+					<div id="keyL" class="span2 keyboard-key">L<audio loop /></div>
+				</div>
+				<div class="row">
+					<div id="keyZ" class="offset4 span2 keyboard-key">Z<audio loop /></div>
+					<div id="keyX" class="span2 keyboard-key">X<audio loop /></div>
+					<div id="keyC" class="span2 keyboard-key">C<audio loop /></div>
+					<div id="keyV" class="span2 keyboard-key">V<audio loop /></div>
+					<div id="keyB" class="span2 keyboard-key">B<audio loop /></div>
+					<div id="keyN" class="span2 keyboard-key">N<audio loop /></div>
+					<div id="keyM" class="span2 keyboard-key">M<audio loop /></div>
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -77,7 +108,7 @@
 							$(this).find("audio").attr("src",ui.draggable.data("filename"));
 						}
 					});
-					$(".ui-draggable").draggable({revert:true});
+					$(".sound-clip").draggable({helper:"clone",revert:true,appendTo:"body"});
 			});
 		</script>
 	</body>
