@@ -17,6 +17,10 @@ def create_user_page (username):
   db = client.launchpad
   allUsers = db.users
   user = allUsers.find_one({"user":username})
+  if user == None:
+    newUser = {"user":username,"test":"New person woot"}
+    allUsers.insert(newUser)
+    user = allUsers.find_one({"user":username})
   test = user["test"]
   return test
 
