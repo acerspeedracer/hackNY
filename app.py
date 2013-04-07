@@ -14,6 +14,7 @@ def email():
 
 @app.route("/<username>")
 def create_user_page (username):
+  db = client.launchpad
   allUsers = db.users
   user = allUsers.find_one({"user":username})
   test = user["test"]
