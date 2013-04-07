@@ -27,6 +27,10 @@ def create_user_page (username):
 		user = allUsers.find_one({"user":username})
 	return "Hello %s"%username
 
+@app.route("/keyboard")
+def create_keyboard_page ():
+	return "keyboard.html"
+
 ALLOWED_EXTENSIONS = set(['ogg', 'wav', 'mp3'])
 
 
