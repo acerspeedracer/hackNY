@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Launchpad</title>
+		<link href="stylesheets/no-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+		<script src="javascripts/jquery-1.9.1.js"></script>
+		<script src="javascripts/jquery-ui-1.10.2.custom.js"></script>
+		<style type="text/css">
+			.keyboard {
+				position: absolute;
+				width: 90%;
+				left: 10%;
+			}
+			.soundList {
+				position: absolute;
+				width: 8%;
+				height: 90%;
+			}
+			.keyboard-key {
+				width: 100px;
+				height: 100px;
+				background: red;
+				float: left;
+				margin: 5px;
+			}
+			.sound-clip {
+				width: 50px;
+				height: 50px;
+				background: green;
+				margin: 5px;
+				list-style-type: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="soundList">
+		<ul>
+			<li id="sound_drag_1" class="sound-clip ui-widget-content ui-draggable">Sound 1</li>
+			<li id="sound_drag_2" class="sound-clip ui-widget-content ui-draggable">Sound 2</li>
+			<li id="sound_drag_3" class="sound-clip ui-widget-content ui-draggable">Sound 3</li>
+			<li id="sound_drag_4" class="sound-clip ui-widget-content ui-draggable">Sound 4</li>
+		</ul>
+	</div>
+		<div id="keyboard">
+			<div id="keyQ" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
+			<div id="keyW" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
+			<div id="keyE" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
+			<div id="keyR" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
+			<div id="keyT" class="keyboard-key ui-widget-content ui-droppable"><audio loop /></div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+					$("#sound_drag_1").data("filename","1.wav");
+					$("#sound_drag_2").data("filename","2.wav");
+					$("#sound_drag_3").data("filename","3.wav");
+					$("#sound_drag_4").data("filename","4.wav");
+					$(document).keydown(function(e) {
+						var sound_button = $("#key" + String.fromCharCode(e.which)).find("audio");
+						if (sound_button.length) {
+							$("#key"+String.fromCharCode(e.which)).css("backgroundColor","green");
+							sound_button[0].play();
+						}
+					});
+					$(document).keyup(function(e) {
+						var sound_button = $("#key" + String.fromCharCode(e.which)).find("audio");
+						console.log(e.which);
+						if (sound_button.length) {
+							$("#key"+String.fromCharCode(e.which)).css("backgroundColor","red");
+							sound_button[0].pause();
+							sound_button[0].currentTime = 0;
+						}
+						});
+
+					$(".keyboard-key").droppable({
+						activeClass: "key-state-hover",
+						hoverClass: "key-stat-active",
+						drop: function(event, ui) {
+							$(this).find("audio").attr("src",ui.draggable.data("filename"));
+						}
+					});
+					$(".ui-draggable").draggable({revert:true});
+			});
+		</script>
+	</body>
+</html>
