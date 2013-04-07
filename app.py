@@ -25,7 +25,8 @@ def create_user_page (username):
 		newUser = {"user":username,"songs":[]}
 		allUsers.insert(newUser)
 		user = allUsers.find_one({"user":username})
-	return "Hello %s"%username
+	allSongs = user['songs']
+	return render_template("keyboard.html",songs=allSongs)
 
 @app.route("/keyboard")
 def create_keyboard_page ():
