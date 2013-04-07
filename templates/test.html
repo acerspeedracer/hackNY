@@ -5,7 +5,7 @@
 			function supportMultiple()
 			{
 				var element = document.createElement("input");
-				return ("multiple" in el);
+				return ("multiple" in element);
 			}
 			function init()
 			{
@@ -17,9 +17,9 @@
 		</script>
 	</head>
 	<body onload = "init()">
-		<form action = "" method = "post" enctype = "multipart/form-data">
-			Enter the .mp3, .wav, or .ogg file name here: <input type = "text" name = "name">
-			<span id = "multipleFileLabel" style = "display:none">Multiple</span>File:<input type = "file" name = "files" multiple = "multiple">
+		<form action="/{{ username }}/upload" method="POST" enctype="multipart/form-data">
+		 <!--		Enter the .mp3, .wav, or .ogg file name here: <input type="text" name="name"> -->
+			<span id = "multipleFileLabel" style = "display:none">Multiple</span>File:<input type="file" name="files" multiple="multiple">
 
 			<input type = "submit">
 		</form>
