@@ -55,6 +55,8 @@ def upload_file(username):
 				if f and allowed_file(f.filename):
 					filename = secure_filename(f.filename)
 					clean_filename = filename.replace('.', '_')
+					if not os.path.exists('public/%s/'%username):
+						os.makedirs('public/%s/'%username)
 					f.save(os.path.join('public/%s/'%username, filename))
 					db = client.launchpad
 					allUsers = db.users
@@ -66,7 +68,7 @@ def upload_file(username):
 						continue
 					song = {"file":clean_filename, "loc":'%s/%s'%(username,filename)}
 					allUsers.update({"user":username},{"$push": {"songs":song}})
-	return render_template('test.html',username=username)
+		return render_template('test.html',username=username)
 	except Exception as e:
 		return "%s"%str(e)
 

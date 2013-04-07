@@ -15,24 +15,41 @@
 				height: 85%;
 				overflow-x: hidden;
 				overflow-y: scroll;
-			}
+			}/*
 			.sound-clip {
 				margin: 3 0 3 0;
 				background: #D2B48C;
 				border: solid black;
+			}*/
+			.keyboard-key-normal {
+				background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+			}
+			.keyboard-key-pressed {
+				background-image: -webkit-linear-gradient(top, #ee5f5b,#bd362f);
+			}
+			ul {
+				list-style-type: none;
 			}
 			.keyboard-key {
-				height: 100px;
-				line-height: 100px;
+				background-color: rgb(0,109,204);
+				height: 90px;
+				text-align: center;
+				color: white;
+				border-radius: 7px;
+				margin: 5px;
+				overflow: hidden;
+			}
+			.sound-name {
+				height: 50px;
+				vertical-align: bottom;
+				text-align: center;
+				line-height: 75px;
+			}
+			.key-name {
+				height: 25px;
 				vertical-align: middle;
 				text-align: center;
-				background: red;
-				-webkit-border-radius: 10px;
-				-moz-border-radius: 10px;
-				border-radius: 10px;
-				border-width: 10;
-				border-color: white;
-				border: solid white;
+				line-height: 50px;
 			}
 		</style>
 	</head>
@@ -50,52 +67,52 @@
 			</div>
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="soundList span2">
-					<div id="sound_drag_1" class="sound-clip">Sound 1</div>
-					<div id="sound_drag_2" class="sound-clip">Sound 2</div>
+				<div class="soundList span3 sidebar-nav well">
+					<ul class="nav nav-list">
 					{% for song in songs %}
-						<div id="{{song.file}}" class="sound-clip">{{song.file}}</div>
+					<li><span id="{{song.file}}" class="sound-clip">{{song.file}}</span></li>
 					{% endfor %}
+				</ul>
 			</div>
-			<div class="span22">
+			<div class="span21">
 				<div class="row">
-					<div id="keyQ" class="offset2 span2 keyboard-key">Q<audio loop /></div>
-					<div id="keyW" class="span2 keyboard-key">W<audio loop /></div>
-					<div id="keyE" class="span2 keyboard-key">E<audio loop /></div>
-					<div id="keyR" class="span2 keyboard-key">R<audio loop /></div>
-					<div id="keyT" class="span2 keyboard-key">T<audio loop /></div>
-					<div id="keyY" class="span2 keyboard-key">Y<audio loop /></div>
-					<div id="keyU" class="span2 keyboard-key">U<audio loop /></div>
-					<div id="keyI" class="span2 keyboard-key">I<audio loop /></div>
-					<div id="keyO" class="span2 keyboard-key">O<audio loop /></div>
-					<div id="keyP" class="span2 keyboard-key">P<audio loop /></div>
-				</div>
+					<div id="keyQ" class="offset2 span2 keyboard-key-normal keyboard-key"><div class="key-name">Q</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyW" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">W</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyE" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">E</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyR" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">R</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyT" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">T</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyY" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">Y</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyU" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">U</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyI" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">I</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyO" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">O</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyP" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">P</div><div class="sound-name"></div><audio loop /></div>
+				</div class="key-name">
 				<div class="row">
-					<div id="keyA" class="offset3 span2 keyboard-key">A<audio loop /></div>
-					<div id="keyS" class="span2 keyboard-key">S<audio loop /></div>
-					<div id="keyD" class="span2 keyboard-key">D<audio loop /></div>
-					<div id="keyF" class="span2 keyboard-key">F<audio loop /></div>
-					<div id="keyG" class="span2 keyboard-key">G<audio loop /></div>
-					<div id="keyH" class="span2 keyboard-key">H<audio loop /></div>
-					<div id="keyJ" class="span2 keyboard-key">J<audio loop /></div>
-					<div id="keyK" class="span2 keyboard-key">K<audio loop /></div>
-					<div id="keyL" class="span2 keyboard-key">L<audio loop /></div>
-				</div>
+					<div id="keyA" class="offset3 span2 keyboard-key-normal keyboard-key"><div class="key-name">A</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyS" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">S</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyD" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">D</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyF" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">F</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyG" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">G</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyH" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">H</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyJ" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">J</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyK" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">K</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyL" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">L</div><div class="sound-name"></div><audio loop /></div>
+				</div class="key-name">
 				<div class="row">
-					<div id="keyZ" class="offset4 span2 keyboard-key">Z<audio loop /></div>
-					<div id="keyX" class="span2 keyboard-key">X<audio loop /></div>
-					<div id="keyC" class="span2 keyboard-key">C<audio loop /></div>
-					<div id="keyV" class="span2 keyboard-key">V<audio loop /></div>
-					<div id="keyB" class="span2 keyboard-key">B<audio loop /></div>
-					<div id="keyN" class="span2 keyboard-key">N<audio loop /></div>
-					<div id="keyM" class="span2 keyboard-key">M<audio loop /></div>
+					<div id="keyZ" class="offset4 span2 keyboard-key-normal keyboard-key"><div class="key-name">Z</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyX" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">X</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyC" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">C</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyV" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">V</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyB" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">B</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyN" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">N</div><div class="sound-name"></div><audio loop /></div>
+					<div id="keyM" class="span2 keyboard-key-normal keyboard-key"><div class="key-name">M</div><div class="sound-name"></div><audio loop /></div>
 				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
 					{% for song in songs %}
-						$("#{{song.file}}").data("filename","{{song.loc}}");
+						$("#{{song.file}}").data("filename","/{{song.loc}}");
 					{% endfor %}
 					$("#sound_drag_1").data("filename","1.wav");
 					$("#sound_drag_2").data("filename","2.wav");
@@ -104,7 +121,9 @@
 					$(document).keydown(function(e) {
 						var sound_button = $("#key" + String.fromCharCode(e.which)).find("audio");
 						if (sound_button.length) {
-							$("#key"+String.fromCharCode(e.which)).css("backgroundColor","green");
+							$("#key"+String.fromCharCode(e.which)).removeClass("keyboard-key-normal");
+							$("#key"+String.fromCharCode(e.which)).addClass("keyboard-key-pressed");
+
 							sound_button[0].play();
 						}
 					});
@@ -112,7 +131,8 @@
 						var sound_button = $("#key" + String.fromCharCode(e.which)).find("audio");
 						console.log(e.which);
 						if (sound_button.length) {
-							$("#key"+String.fromCharCode(e.which)).css("backgroundColor","red");
+							$("#key"+String.fromCharCode(e.which)).addClass("keyboard-key-normal");
+							$("#key"+String.fromCharCode(e.which)).removeClass("keyboard-key-pressed");
 							sound_button[0].pause();
 							sound_button[0].currentTime = 0;
 						}
@@ -122,7 +142,8 @@
 						activeClass: "key-state-hover",
 						hoverClass: "key-stat-active",
 						drop: function(event, ui) {
-							$(this).find("audio").attr("src",ui.draggable.data("filename"));
+						$(this).find("audio").attr("src",ui.draggable.data("filename"));
+						$(this).find(".sound-name").html(ui.draggable.html());
 						}
 					});
 					$(".sound-clip").draggable({helper:"clone",revert:true,appendTo:"body"});

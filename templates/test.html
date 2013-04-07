@@ -17,7 +17,7 @@
 		</script>
 	</head>
 	<body onload = "init()">
-		<form action="/{{ username }}/upload" method="POST" enctype="multipart/form-data">
+		<form action="/upload/{{ username }}" method="POST" enctype="multipart/form-data">
 		 <!--		Enter the .mp3, .wav, or .ogg file name here: <input type="text" name="name"> -->
 			<span id = "multipleFileLabel" style = "display:none">Multiple</span>File:<input type="file" name="files" multiple="multiple">
 
