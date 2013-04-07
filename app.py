@@ -10,7 +10,7 @@ client = MongoClient('localhost',9003)
 
 @app.route("/")
 def email():
-	return "apple pie"
+	return render_template("home.html")
 
 @app.route("/<username>")
 def create_user_page (username):
