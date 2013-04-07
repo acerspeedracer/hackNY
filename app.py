@@ -10,9 +10,14 @@ client = MongoClient('localhost',9003)
 
 @app.route("/")
 def email():
-  return "apples"
+  return "apple pie"
 
-@app.route(
+@app.route("/<username>")
+def create_user_page (username):
+  allUsers = db.users
+  user = allUsers.find_one({"user":username})
+  test = user["test"]
+  return test
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
