@@ -66,9 +66,9 @@ def upload_file(username):
 						continue
 					song = {"file":clean_filename, "loc":'%s/%s'%(username,filename)}
 					allUsers.update({"user":username},{"$push": {"songs":song}})
+	return render_template('test.html',username=username)
 	except Exception as e:
 		return "%s"%str(e)
-	return render_template('test.html',username=username)
 
 #I dont think this does anything
 @app.route('/<username>/songs/<filename>')
