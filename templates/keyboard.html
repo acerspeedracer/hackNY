@@ -42,6 +42,9 @@
 				<div class="soundList span2">
 					<div id="sound_drag_1" class="sound-clip">Sound 1</div>
 					<div id="sound_drag_2" class="sound-clip">Sound 2</div>
+					{% for song in songs %}
+						<div id="{{song.file}}" class="sound-clip">{{song.file}}</div>
+					{% endfor %}
 			</div>
 			<div class="span22">
 				<div class="row">
@@ -80,6 +83,9 @@
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function() {
+					{% for song in songs %}
+						$("#{{song.file}}").data("filename","{{song.loc}}");
+					{% endfor %}
 					$("#sound_drag_1").data("filename","1.wav");
 					$("#sound_drag_2").data("filename","2.wav");
 					$("#sound_drag_3").data("filename","3.wav");
