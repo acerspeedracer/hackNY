@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script>
-			function supportMultiple()
-			{
-				var element = document.createElement("input");
-				return ("multiple" in element);
-			}
-			function init()
-			{
-				if(supportMultiple())
-				{
-					document.querySelector("#multipleFileLabel").setAttribute("style","")
-				}
-			}
-		</script>
+		<title>Uploader</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	</head>
-	<body onload = "init()">
-		<form action="/{{ username }}/upload" method="POST" enctype="multipart/form-data">
-		 <!--		Enter the .mp3, .wav, or .ogg file name here: <input type="text" name="name"> -->
-			<span id = "multipleFileLabel" style = "display:none">Multiple</span>File:<input type="file" name="files" multiple="multiple">
+	<body>
+		<br />
+		<div class="container-fluid">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a class="brand" href="#">launchp.ad</a>
+					<ul class="nav">
+						<!--						<li><a href ="home/" >Home</a></li>
+						<li><a href ="user.html">User</a></li>
+						<li><a href ="upload.html">Upload</a></li>
+						<li class="active"><a href ="#">Register</a></li>
+						-->
+					</ul>
+				</div>
 
-			<input type = "submit" value = "add">
-		</form>
+				<div class="container-fluid" align="justify">
+					<div class="hero-unit" style="width:500px">
+						<h1>Upload your files below</h1>
+						<br>
+						<input type = "file" multiple accept="audio/*" name="files">
+						<p>
+							<a class = "btn btn-primary btn-large">
+								Submit
+							</a>
+							</p>
+					</div>
+				</div>
 
-	</body>
-</html>
+
+				<script src="../static/js/jquery-1.9.1.min.js"></script>
+				<script src="../static/js/bootstrap.min.js"></script>
+			</body>
+		</html>
+
