@@ -29,7 +29,7 @@ def create_user_page (username):
 
 @app.route("/keyboard")
 def create_keyboard_page ():
-	return "keyboard.html"
+	return render_template("keyboard.html")
 
 ALLOWED_EXTENSIONS = set(['ogg', 'wav', 'mp3'])
 
@@ -61,6 +61,7 @@ def upload_file(username):
 		return "%s"%str(e)
 	return render_template('test.html',username=username)
 
+#I dont think this does anything
 @app.route('/<username>/songs/<filename>')
 def uploaded_file(username, filename):
 	return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
