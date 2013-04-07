@@ -47,16 +47,17 @@ def upload_file(username):
 			for f in filelist :
 				if f and allowed_file(f.filename):
 					filename = secure_filename(f.filename)
+					clean_filename = filename.replace('.', '_')
 					f.save(os.path.join('public/%s/'%username, filename))
 					db = client.launchpad
 					allUsers = db.users
 					user = allUsers.find_one({"user":username})
 					if user == None:
 						return "Not a user"
-					fnd = allUsers.find_one({"user":username,"songs":{"$elemMatch":{"file":filename}}})
+					fnd = allUsers.find_one({"user":username,"songs":{"$elemMatch":{"file":clean_filename}}})
 					if fnd != None:
 						continue
-					song = {"file":filename, "loc":'public/%s/%s'%(username,filename)}
+					song = {"file":clean_filename, "loc":'%s/%s'%(username,filename)}
 					allUsers.update({"user":username},{"$push": {"songs":song}})
 	except Exception as e:
 		return "%s"%str(e)
