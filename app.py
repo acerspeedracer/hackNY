@@ -9,15 +9,23 @@ app = Flask(__name__)
 client = MongoClient('localhost',9003)
 
 @app.route("/")
-def email():
-	return "nothing here"
+def index():
+	return render_template("register.html")
 
-@app.route("/test")
-def test():
-	return render_template("home.html")
+@app.route("/home/<username>")
+def user_page(username):
+	db = client.launchpad
+	allUsers = db.users
+	user = allUsers.find_one({"user":username})
+	allSongs = user['songs']
+	return render_template("keyboard.html",username=username,songs=allSongs)
 
-@app.route("/<username>")
-def create_user_page (username):
+@app.route("/register",methods=['GET'])
+def create_register_page ():
+	try:
+		username = request.args.get("username",None)
+	except Exception as e:
+		return str(e)
 	db = client.launchpad
 	allUsers = db.users
 	user = allUsers.find_one({"user":username})
@@ -25,8 +33,7 @@ def create_user_page (username):
 		newUser = {"user":username,"songs":[]}
 		allUsers.insert(newUser)
 		user = allUsers.find_one({"user":username})
-	allSongs = user['songs']
-	return render_template("keyboard.html",songs=allSongs)
+	return redirect(url_for("user_page",username=username))
 
 @app.route("/keyboard")
 def create_keyboard_page ():
@@ -39,7 +46,7 @@ def allowed_file(filename):
 	return '.' in filename and \
 			filename.rsplit('.',1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/<username>/upload', methods = ['GET', 'POST'])
+@app.route('/upload/<username>', methods = ['GET', 'POST'])
 def upload_file(username):
 	try :
 		if request.method == 'POST':
